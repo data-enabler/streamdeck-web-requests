@@ -1,0 +1,52 @@
+{
+  "Actions": [
+    {
+      "UUID": "gg.datagram.web-requests.http",
+      "Name": "HTTP Request",
+      "Tooltip": "Send an HTTP request.",
+      "PropertyInspectorPath": "propertyInspector/http.html",
+      "Icon": "images/http_action",
+      "States": [
+        {
+          "Image": "images/http_key"
+        }
+      ]
+    },
+    {
+      "UUID": "gg.datagram.web-requests.websocket",
+      "Name": "Websocket Message",
+      "Tooltip": "Send a WebSocket message.",
+      "PropertyInspectorPath": "propertyInspector/websocket.html",
+      "Icon": "images/websocket_action",
+      "States": [
+        {
+          "Image": "images/websocket_key"
+        }
+      ]
+    }
+  ],
+  "SDKVersion": 2,
+  "Author": "Adrian Mullings",
+  "CodePath": "index.html",
+  "Name": "Web Requests",
+  "Description": "Send arbitrary web requests vis HTTP or WebSocket",
+  "Icon": "images/plugin",
+  "Category": "Web Requests",
+  "CategoryIcon": "images/category",
+  "URL": "https://github.com/data-enabler/streamdeck-web-requests",
+  "Version": "0.0.1",
+  "OS": [
+    {
+        "Platform": "mac",
+        "MinimumVersion" : "10.11"
+    },
+    {
+        "Platform": "windows",
+        "MinimumVersion" : "10"
+    }
+  ],
+  "Software":
+    {
+        "MinimumVersion" : "4.2"
+    }
+}

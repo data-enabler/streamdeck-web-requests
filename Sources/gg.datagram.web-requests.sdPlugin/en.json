@@ -1,0 +1,19 @@
+{
+  "Name": "Web Requests",
+  "Description": "Use this to create your own plugin",
+  "Category": "Web Requests",
+  "gg.datagram.web-requests.http": {
+    "Name": "HTTP Request",
+    "Tooltip": "Send an HTTP request."
+  },
+  "gg.datagram.web-requests.websocket": {
+    "Name": "Websocket Message",
+    "Tooltip": "Send a WebSocket message."
+  },
+  "Localization": {
+    "URL": "URL",
+    "Method": "Method",
+    "Message": "Message",
+    "Body": "Body"
+  }
+}
