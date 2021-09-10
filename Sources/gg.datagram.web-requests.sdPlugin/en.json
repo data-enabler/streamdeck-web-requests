@@ -7,7 +7,7 @@
     "Tooltip": "Send an HTTP request."
   },
   "gg.datagram.web-requests.websocket": {
-    "Name": "Websocket Message",
+    "Name": "WebSocket Message",
     "Tooltip": "Send a WebSocket message."
   },
   "Localization": {

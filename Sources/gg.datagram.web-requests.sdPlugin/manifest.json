@@ -14,7 +14,7 @@
     },
     {
       "UUID": "gg.datagram.web-requests.websocket",
-      "Name": "Websocket Message",
+      "Name": "WebSocket Message",
       "Tooltip": "Send a WebSocket message.",
       "PropertyInspectorPath": "propertyInspector/websocket.html",
       "Icon": "images/websocket_action",
