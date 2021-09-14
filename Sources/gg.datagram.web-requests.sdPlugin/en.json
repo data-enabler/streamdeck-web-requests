@@ -1,6 +1,6 @@
 {
   "Name": "Web Requests",
-  "Description": "Use this to create your own plugin",
+  "Description": "Send arbitrary web requests via HTTP or WebSocket.",
   "Category": "Web Requests",
   "gg.datagram.web-requests.http": {
     "Name": "HTTP Request",

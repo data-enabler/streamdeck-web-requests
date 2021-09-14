@@ -29,7 +29,7 @@
   "Author": "Adrian Mullings",
   "CodePath": "index.html",
   "Name": "Web Requests",
-  "Description": "Send arbitrary web requests vis HTTP or WebSocket",
+  "Description": "Send arbitrary web requests via HTTP or WebSocket.",
   "Icon": "images/plugin",
   "Category": "Web Requests",
   "CategoryIcon": "images/category",
