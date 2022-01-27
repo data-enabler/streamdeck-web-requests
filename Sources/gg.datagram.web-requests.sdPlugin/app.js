@@ -18,8 +18,34 @@ function connected(jsn) {
  * }} data
  */
 function sendHttp(data) {
-    const { url, method, body } = data.payload.settings;
-    log('sendHttp', { url, method, body });
+    const { url, method, contentType, headers, body } = data.payload.settings;
+    log('sendHttp', { url, method, contentType, headers, body });
+
+    let defaultHeaders = {
+      'Content-Type': contentType
+    };
+    let inputHeaders = {};
+
+    if (typeof headers !== 'undefined') {
+      const headersArray = headers.split(/\n/);
+
+      for (let i = 0; i < headersArray.length; i += 1) {
+        const [headerItem, headerItemValue] = headersArray[i].split(';');
+
+        const updatedHeader = Object.assign(inputHeaders, {
+          [headerItem]: headerItemValue
+        });
+        inputHeaders = updatedHeader;
+      }
+    }
+
+    const fullHeaders = {
+      ...defaultHeaders,
+      ...inputHeaders
+    }
+
+    log(fullHeaders);
+
     if (!url || !method) {
         showAlert(data.context);
         return;

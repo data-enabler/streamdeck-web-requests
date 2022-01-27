@@ -30,12 +30,23 @@
       </select>
     </div>
 
-    <!--div type="textarea" class="sdpi-item" id="headers">
-      <div class="sdpi-item-label">Headers</div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label" data-localize="ContentType">Content Type</div>
+      <select class="sdpi-item-value select" id="contentType" required>
+        <option value="" disabled selected hidden></option>
+        <option value="application/json">application/json</option>
+        <option value="application/xml">application/xml</option>
+        <option value="text/plain">text/plain</option>
+        <option value="text/html">text/html</option>
+      </select>
+    </div>
+
+    <div type="textarea" class="sdpi-item">
+      <div class="sdpi-item-label" data-localize="Headers">Headers</div>
       <span class="sdpi-item-value textarea">
-        <textarea type="textarea" id="textarea_headers"></textarea>
+        <textarea type="textarea" id="headers" placeholder="header;value&#10;e.g.&#10;Authorization;Bearer token"></textarea>
       </span>
-    </div-->
+    </div>
 
     <div type="textarea" class="sdpi-item">
       <div class="sdpi-item-label" data-localize="Body">Body</div>
