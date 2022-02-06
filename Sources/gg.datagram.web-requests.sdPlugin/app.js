@@ -29,7 +29,7 @@ function sendHttp(data) {
         {
             cache: 'no-cache',
             method,
-            body,
+            body: ['GET', 'HEAD'].includes(method) ? undefined : body,
         })
         .then(checkResponseStatus)
         .then(() => showOk(data.context))
