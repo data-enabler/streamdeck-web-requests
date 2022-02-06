@@ -76,20 +76,20 @@ function sendWebSocket(data) {
  * @returns {Promise<Response>}
  */
 async function checkResponseStatus(resp) {
-  if (!resp) {
-    throw new Error();
-  }
-  if (!resp.ok) {
-    throw new Error(`${resp.status}: ${resp.statusText}\n${await resp.text()}`);
-  }
-  return resp;
+    if (!resp) {
+        throw new Error();
+    }
+    if (!resp.ok) {
+        throw new Error(`${resp.status}: ${resp.statusText}\n${await resp.text()}`);
+    }
+    return resp;
 }
 
 /**
  * @param {WebSocket} ws
  */
 function onOpen(ws) {
-  log(`Connection to ${ws.url} opened`);
+    log(`Connection to ${ws.url} opened`);
 }
 
 /**
@@ -97,7 +97,7 @@ function onOpen(ws) {
  * @param {CloseEvent} evt
  */
 function onClose(ws, evt) {
-  log(`Connection to ${ws.url} closed:`, evt.code, evt.reason);
+    log(`Connection to ${ws.url} closed:`, evt.code, evt.reason);
 }
 
 /**
@@ -115,7 +115,7 @@ function showAlert(context) {
 }
 
 /**
- * @param  {...unknown} msg
+ * @param {...unknown} msg
  */
 function log(...msg) {
     console.log(...msg);
@@ -123,7 +123,7 @@ function log(...msg) {
 }
 
 /**
- * @param  {...unknown} msg
+ * @param {...unknown} msg
  */
 function logErr(...msg) {
     console.error(...msg);
