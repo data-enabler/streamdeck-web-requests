@@ -157,7 +157,7 @@ $SD.on('piDataChanged', (returnValue) => {
 
     console.log('%c%s', 'color: white; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
-    
+
     if (returnValue.key === 'clickme') {
 
         postMessage = (w) => {
@@ -205,7 +205,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
 
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.value && sdpi_collection.value !== undefined) {
+        if (sdpi_collection.value !== undefined) {
             console.log(sdpi_collection.key, " => ", sdpi_collection.value);
             settings[sdpi_collection.key] = sdpi_collection.value;
             console.log('setSettings....', settings);

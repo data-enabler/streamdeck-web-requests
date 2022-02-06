@@ -12,7 +12,7 @@ function connected(jsn) {
  *     settings: {
  *       url?: string,
  *       method?: string,
- *       body?: string,
+ *       body?: string|null,
  *     }
  *   },
  * }} data
@@ -45,7 +45,7 @@ function sendHttp(data) {
  *   payload: {
  *     settings: {
  *       url?: string,
- *       body?: string,
+ *       body?: string|null,
  *     }
  *   },
  * }} data
