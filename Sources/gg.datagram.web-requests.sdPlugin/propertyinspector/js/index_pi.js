@@ -18,7 +18,7 @@
  * or while their value changes 'onchange'.
  */
 
-var onchangeevt = 'onchange'; // 'oninput';
+var onchangeevt = 'oninput';
 
 /**
  * cache the static SDPI-WRAPPER, which contains all your HTML elements.
