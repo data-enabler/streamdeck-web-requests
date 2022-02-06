@@ -12,6 +12,8 @@ function connected(jsn) {
  *     settings: {
  *       url?: string,
  *       method?: string,
+ *       contentType?: string|null,
+ *       headers?: string|null,
  *       body?: string|null,
  *     }
  *   },
@@ -21,27 +23,30 @@ function sendHttp(data) {
     const { url, method, contentType, headers, body } = data.payload.settings;
     log('sendHttp', { url, method, contentType, headers, body });
 
-    let defaultHeaders = {
-      'Content-Type': contentType
-    };
+    let defaultHeaders = contentType ? {
+        'Content-Type':  contentType
+    } : {};
     let inputHeaders = {};
 
-    if (typeof headers !== 'undefined') {
-      const headersArray = headers.split(/\n/);
+    if (headers) {
+        const headersArray = headers.split(/\n/);
 
-      for (let i = 0; i < headersArray.length; i += 1) {
-        const [headerItem, headerItemValue] = headersArray[i].split(';');
+        for (let i = 0; i < headersArray.length; i += 1) {
+            if (headersArray[i].includes(':')) {
+                const [headerItem, headerItemValue] = headersArray[i].split(/:(.*)/);
+                const trimmedHeaderItem = headerItem.trim();
+                const trimmedHeaderItemValue = headerItemValue.trim();
 
-        const updatedHeader = Object.assign(inputHeaders, {
-          [headerItem]: headerItemValue
-        });
-        inputHeaders = updatedHeader;
-      }
+                if (trimmedHeaderItem) {
+                    inputHeaders[trimmedHeaderItem] = trimmedHeaderItemValue;
+                }
+            }
+        }
     }
 
     const fullHeaders = {
-      ...defaultHeaders,
-      ...inputHeaders
+        ...defaultHeaders,
+        ...inputHeaders
     }
 
     log(fullHeaders);
@@ -54,6 +59,7 @@ function sendHttp(data) {
         url,
         {
             cache: 'no-cache',
+            headers: fullHeaders,
             method,
             body: ['GET', 'HEAD'].includes(method) ? undefined : body,
         })
