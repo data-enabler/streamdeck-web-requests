@@ -13,6 +13,8 @@
   "Localization": {
     "URL": "URL",
     "Method": "Method",
+    "ContentType": "Content Type",
+    "Headers": "Headers",
     "Message": "Message",
     "Body": "Body"
   }

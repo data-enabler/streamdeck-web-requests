@@ -12,14 +12,45 @@ function connected(jsn) {
  *     settings: {
  *       url?: string,
  *       method?: string,
+ *       contentType?: string|null,
+ *       headers?: string|null,
  *       body?: string|null,
  *     }
  *   },
  * }} data
  */
 function sendHttp(data) {
-    const { url, method, body } = data.payload.settings;
-    log('sendHttp', { url, method, body });
+    const { url, method, contentType, headers, body } = data.payload.settings;
+    log('sendHttp', { url, method, contentType, headers, body });
+
+    let defaultHeaders = contentType ? {
+        'Content-Type':  contentType
+    } : {};
+    let inputHeaders = {};
+
+    if (headers) {
+        const headersArray = headers.split(/\n/);
+
+        for (let i = 0; i < headersArray.length; i += 1) {
+            if (headersArray[i].includes(':')) {
+                const [headerItem, headerItemValue] = headersArray[i].split(/:(.*)/);
+                const trimmedHeaderItem = headerItem.trim();
+                const trimmedHeaderItemValue = headerItemValue.trim();
+
+                if (trimmedHeaderItem) {
+                    inputHeaders[trimmedHeaderItem] = trimmedHeaderItemValue;
+                }
+            }
+        }
+    }
+
+    const fullHeaders = {
+        ...defaultHeaders,
+        ...inputHeaders
+    }
+
+    log(fullHeaders);
+
     if (!url || !method) {
         showAlert(data.context);
         return;
@@ -28,6 +59,7 @@ function sendHttp(data) {
         url,
         {
             cache: 'no-cache',
+            headers: fullHeaders,
             method,
             body: ['GET', 'HEAD'].includes(method) ? undefined : body,
         })
