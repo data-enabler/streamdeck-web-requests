@@ -1,0 +1,4 @@
+textarea {
+  resize: vertical;
+  min-height: 0;
+}

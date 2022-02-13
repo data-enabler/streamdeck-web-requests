@@ -7,7 +7,7 @@
   <meta name=apple-mobile-web-app-capable content=yes>
   <meta name=apple-mobile-web-app-status-bar-style content=black>
   <title>gg.datagram.web-requests.http</title>
-  <link rel="stylesheet" href="css/sdpi.css">
+  <link rel="stylesheet" href="css/pi.css">
 </head>
 
 <body>
@@ -41,17 +41,17 @@
       </select>
     </div>
 
-    <div type="textarea" class="sdpi-item">
+    <div type="textarea" class="sdpi-item" title="Enter each HTTP header on a separate line, with the name and value separated by a colon">
       <div class="sdpi-item-label" data-localize="Headers">Headers</div>
       <span class="sdpi-item-value textarea">
-        <textarea type="textarea" id="headers" placeholder="header:value&#10;e.g.&#10;Authorization:Bearer token"></textarea>
+        <textarea type="textarea" rows="1" id="headers" placeholder="Authorization: Bearer [token]"></textarea>
       </span>
     </div>
 
     <div type="textarea" class="sdpi-item">
       <div class="sdpi-item-label" data-localize="Body">Body</div>
       <span class="sdpi-item-value textarea">
-        <textarea type="textarea" id="body"></textarea>
+        <textarea type="textarea" rows="5" id="body"></textarea>
       </span>
     </div>
   </div>

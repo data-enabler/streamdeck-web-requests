@@ -72,6 +72,7 @@ $SD.on('connected', (jsn) => {
     if (settings) {
         updateUI(settings);
     }
+    autosizeTextareas();
 });
 
 /**
@@ -182,6 +183,18 @@ $SD.on('piDataChanged', (returnValue) => {
         sendValueToPlugin(returnValue, 'sdpi_collection');
     }
 });
+
+/**
+ * Resize textareas to fit their content.
+ * This is intended to be run once when the content is loaded.
+ */
+function autosizeTextareas() {
+    document.querySelectorAll('textarea').forEach(elem => {
+        elem.style.boxSizing = 'border-box';
+        elem.style.minHeight = elem.offsetHeight + 'px';
+        elem.style.height = elem.scrollHeight + 'px';
+    });
+}
 
 /**
  * Below are a bunch of helpers to make your DOM interactive
