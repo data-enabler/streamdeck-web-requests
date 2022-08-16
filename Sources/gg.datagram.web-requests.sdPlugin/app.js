@@ -98,8 +98,13 @@ function sendWebSocket(data) {
     ws.onopen = function() {
         onOpen(this);
         ws.send(body);
-        ws.close();
         showOk(data.context);
+		const readyCloseInterval = setInterval(function() {
+			if (ws.bufferedAmount == 0) {
+			  ws.close();
+			  clearInterval(readyCloseInterval);
+			}
+		}, 100);        
     };
 }
 
