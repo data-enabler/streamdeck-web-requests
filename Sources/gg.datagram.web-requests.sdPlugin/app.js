@@ -97,20 +97,20 @@ function sendWebSocket(data) {
     ws.onclose = function(evt) { onClose(this, evt); };
     ws.onopen = function() {
         onOpen(this);
-	    const start = new Date();
+        const start = new Date();
         ws.send(body);
-		const readyCloseInterval = setInterval(function() {
-			if (ws.bufferedAmount == 0) {
-			    ws.close();
-			    showOk(data.context);
-			    clearInterval(readyCloseInterval);
-			}
-			else if ((new Date().getTime() - start.getTime()) > 3000) {
-			    showAlert(data.context);
-			    logErr(new Error('WebSocket send timeout'));
-			    clearInterval(readyCloseInterval);
-			}
-		}, 50);        
+        const readyCloseInterval = setInterval(function() {
+            if (ws.bufferedAmount == 0) {
+                ws.close();
+                showOk(data.context);
+                clearInterval(readyCloseInterval);
+            }
+            else if ((new Date().getTime() - start.getTime()) > 3000) {
+                showAlert(data.context);
+                logErr(new Error('WebSocket send timeout'));
+                clearInterval(readyCloseInterval);
+            }
+        }, 50);
     };
 }
 
