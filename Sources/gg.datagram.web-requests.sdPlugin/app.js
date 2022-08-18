@@ -97,14 +97,20 @@ function sendWebSocket(data) {
     ws.onclose = function(evt) { onClose(this, evt); };
     ws.onopen = function() {
         onOpen(this);
+	    const start = new Date();
         ws.send(body);
-        showOk(data.context);
 		const readyCloseInterval = setInterval(function() {
 			if (ws.bufferedAmount == 0) {
-			  ws.close();
-			  clearInterval(readyCloseInterval);
+			    ws.close();
+			    showOk(data.context);
+			    clearInterval(readyCloseInterval);
 			}
-		}, 100);        
+			else if ((new Date().getTime() - start.getTime()) > 3000) {
+			    showAlert(data.context);
+			    logErr(new Error('WebSocket send timeout'));
+			    clearInterval(readyCloseInterval);
+			}
+		}, 50);        
     };
 }
 
