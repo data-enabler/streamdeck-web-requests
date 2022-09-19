@@ -97,7 +97,7 @@ function sendWebSocket(data) {
     ws.onclose = function(evt) { onClose(this, evt); };
     ws.onopen = function() {
         onOpen(this);
-        const start = new Date();
+        const start = performance.now();
         ws.send(body);
         const readyCloseInterval = setInterval(function() {
             if (ws.bufferedAmount == 0) {
@@ -105,7 +105,7 @@ function sendWebSocket(data) {
                 showOk(data.context);
                 clearInterval(readyCloseInterval);
             }
-            else if ((new Date().getTime() - start.getTime()) > 3000) {
+            else if ((performance.now() - start) > 3000) {
                 showAlert(data.context);
                 logErr(new Error('WebSocket send timeout'));
                 clearInterval(readyCloseInterval);
