@@ -106,6 +106,7 @@ function sendWebSocket(data) {
                 clearInterval(readyCloseInterval);
             }
             else if ((performance.now() - start) > 3000) {
+                ws.close();
                 showAlert(data.context);
                 logErr(new Error('WebSocket send timeout'));
                 clearInterval(readyCloseInterval);
