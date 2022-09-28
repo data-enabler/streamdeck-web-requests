@@ -97,9 +97,21 @@ function sendWebSocket(data) {
     ws.onclose = function(evt) { onClose(this, evt); };
     ws.onopen = function() {
         onOpen(this);
+        const start = performance.now();
         ws.send(body);
-        ws.close();
-        showOk(data.context);
+        const readyCloseInterval = setInterval(function() {
+            if (ws.bufferedAmount == 0) {
+                ws.close();
+                showOk(data.context);
+                clearInterval(readyCloseInterval);
+            }
+            else if ((performance.now() - start) > 3000) {
+                ws.close();
+                showAlert(data.context);
+                logErr(new Error('WebSocket send timeout'));
+                clearInterval(readyCloseInterval);
+            }
+        }, 50);
     };
 }
 
