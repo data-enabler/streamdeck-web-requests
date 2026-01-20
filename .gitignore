@@ -1,3 +1,4 @@
 *.png
 *.streamDeckPlugin
 DistributionTool.exe
+node_modules/
