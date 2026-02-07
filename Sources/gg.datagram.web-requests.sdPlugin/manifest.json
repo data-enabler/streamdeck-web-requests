@@ -29,24 +29,24 @@
   "Author": "Adrian Mullings",
   "CodePath": "index.html",
   "Name": "Web Requests",
+  "UUID": "gg.datagram.web-requests",
   "Description": "Send arbitrary web requests via HTTP or WebSocket.",
   "Icon": "images/plugin",
   "Category": "Web Requests",
   "CategoryIcon": "images/category",
   "URL": "https://github.com/data-enabler/streamdeck-web-requests",
-  "Version": "0.1.0",
+  "Version": "0.1.1.0",
   "OS": [
     {
-        "Platform": "mac",
-        "MinimumVersion" : "10.11"
+      "Platform": "mac",
+      "MinimumVersion": "10.11"
     },
     {
-        "Platform": "windows",
-        "MinimumVersion" : "10"
+      "Platform": "windows",
+      "MinimumVersion": "10"
     }
   ],
-  "Software":
-    {
-        "MinimumVersion" : "4.2"
-    }
+  "Software": {
+    "MinimumVersion": "6.4"
+  }
 }
